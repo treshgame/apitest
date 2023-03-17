@@ -26,12 +26,14 @@ class NotebookController extends Controller
         $rules = [
             'full_name' => 'required|min:3|max:150',
             'phone_number' => 'required|min:11|max:15',
-            'email' => 'email:rfc,dns|max:100'
+            'email' => 'email:rfc,dns|max:100',
+            'birthday' => 'nullable|date'
         ];
+
         $validator = Validator::make($request->all(), $rules);
         if($validator->fails())
             return response()->json($validator->errors(), 400);
-
+        
         $newNote = Note::create($request->all()); 
         return response()->json($newNote, 201);
     }
@@ -44,7 +46,8 @@ class NotebookController extends Controller
         $rules = [
             'full_name' => 'required|min:3|max:150',
             'phone_number' => 'required|min:11|max:15',
-            'email' => 'email:rfc,dns|max:100'
+            'email' => 'email:rfc,dns|max:100',
+            'birthday' => 'nullable|date'
         ];
         $validator = Validator::make($request->all(), $rules);
         if($validator->fails())
