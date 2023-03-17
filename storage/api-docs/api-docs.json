@@ -1,0 +1,298 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Notebook Api",
+        "description": "My test work to get a job i like",
+        "version": "1.0"
+    },
+    "paths": {
+        "/notebook": {
+            "get": {
+                "summary": "Get list of notes",
+                "description": "Show Notes",
+                "operationId": "3e32a7251385aaf82682ba683dc5b022",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "full_name": {
+                                            "type": "string",
+                                            "example": "Sergeev Vladimir"
+                                        },
+                                        "company": {
+                                            "type": "string",
+                                            "example": "myRich company"
+                                        },
+                                        "phone_number": {
+                                            "type": "stringg",
+                                            "example": "88005553535"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "bigcompany@gmail.com"
+                                        },
+                                        "birthday": {
+                                            "type": "string",
+                                            "example": "8.10.2002"
+                                        },
+                                        "photo": {
+                                            "type": "string",
+                                            "example": "AnyBlobData"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Update Note",
+                "operationId": "7532046f826ea54cac153583a51c654c",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "note": {
+                                            "type": "string",
+                                            "example": "{id = 1, full_name=FIO, company=null, phone_number=+79999999999, emil=email.@na.na}"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "validation failed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation failed"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Create Notes",
+                "operationId": "c758c27cfc31d7fb8eaf206f81d65948",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "full_name": {
+                                            "type": "string",
+                                            "example": "Sergeev Vladimir"
+                                        },
+                                        "company": {
+                                            "type": "string",
+                                            "example": "myRich company"
+                                        },
+                                        "phone_number": {
+                                            "type": "stringg",
+                                            "example": "88005553535"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "bigcompany@gmail.com"
+                                        },
+                                        "birthday": {
+                                            "type": "string",
+                                            "example": "8.10.2002"
+                                        },
+                                        "photo": {
+                                            "type": "string",
+                                            "example": "AnyBlobData"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "validation failed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation failed"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/notebook/{id}": {
+            "get": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Get note by the id",
+                "description": "Show Note by ID",
+                "operationId": "3a1618164ebbf044290dc9b187e08344",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "id": 23
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": "1"
+                                        },
+                                        "full_name": {
+                                            "type": "string",
+                                            "example": "Sergeev Vladimir"
+                                        },
+                                        "company": {
+                                            "type": "string",
+                                            "example": "myRich company"
+                                        },
+                                        "phone_number": {
+                                            "type": "stringg",
+                                            "example": "88005553535"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "bigcompany@gmail.com"
+                                        },
+                                        "birthday": {
+                                            "type": "string",
+                                            "example": "8.10.2002"
+                                        },
+                                        "photo": {
+                                            "type": "string",
+                                            "example": "AnyBlobData"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Delete Note",
+                "operationId": "45ff095b00db8f6252e0e3e50bd87454",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "404": {
+                        "description": "Record not found"
+                    }
+                }
+            }
+        }
+    }
+}
