@@ -18,4 +18,6 @@ use App\Http\Controllers\NotebookController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::resource('notebook', NotebookController::class);
+Route::get('/notebook', [NotebookController::class, 'getNotes']);
+Route::get('/notebook/{id}', [NotebookController::class, 'getNotes']);
+Route::post('/notebook', [NotebookController::class, 'addNote']);

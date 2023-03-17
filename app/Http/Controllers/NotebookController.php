@@ -7,81 +7,42 @@ use Illuminate\Http\Request;
 
 class NotebookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function getNotes()
     {
-        $notes = Note::latest()->paginate(10);
+        return response()->json(Note::get(), 200);
+    }
+
+    public function getNoteById($id){
+        return response()->json(Note::find($id)->get(), 200);
+    }
+    public function addNote(Request $request)
+    {
+        // $fullName = isset($request->full_name) ? $request->full_name : null;
+        // if($fullName == null)
+        //     return response("There is no required data", 0);
         
-        return response($notes, 200)->header('Content-type', 'text/json');
+        // $company = isset($request->company) ? $request->company : null;
+        // $phoneNumber = isset($request->phone_number) ? $request->phone_number : null;
+        // if($phoneNumber == null)
+        //     return response("There is not required data", 0)->header("Content-type", "text/plain");
+
+        // $email = isset($request->email) ? $request->email : null;
+        // if($email == null)
+        //     return response("There is no required data", 200)->header("Content-type", "text/plain");
+        
+        // $birthday = isset($request->birthday) ? $request->birthday : null;
+        // $photo = isset($request->photo) ? $request->photo : null;
+
+        // $note = new Note;
+        // $note->full_name = $fullName;
+        // $note->company = $company;
+        // $note->phone_company = $phoneNumber;
+        // $note->email = $email;
+        // $note->birthday =  $birthday;
+        // $note->photo = $photo;
+        // $note->save();
+        $newNote = Note::create($request->all()); 
+        return response()->json($newNote, 201);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Note  $note
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Note $note)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Note  $note
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Note $note)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Note  $note
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Note $note)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Note  $note
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Note $note)
-    {
-        //
-    }
 }
